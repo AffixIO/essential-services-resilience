@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "affixio-essential-services-resilience"
+version = "0.1.0"
+description = "Simulation-only offline continuity authorisation and reconciliation for essential services."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["cryptography>=46,<47"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.14,<1", "build>=1,<2"]
+
+[project.scripts]
+resilience-assurance = "resilience_assurance.demo:main"
+
+[project.urls]
+Repository = "https://github.com/AffixIO/essential-services-resilience"
+
+[tool.setuptools.packages.find]
+include = ["resilience_assurance*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+extend-exclude = ["build", "dist"]
